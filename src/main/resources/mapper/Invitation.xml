@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zx.dao.InvitationDao">
+    <!--查询总记录数-->
+    <select id="findCountPag" resultType="_int">
+        SELECT count(1) FROM invitation
+        <where>
+            <if test="title!=null and title!='' ">
+                title LIKE concat('%',#{title},'%')
+            </if>
+        </where>
+    </select>
+<!--根据分页查询数据-->
+    <select id="selectInvitationList" resultType="Invitation">
+       SELECT * FROM invitation
+       <where>
+           <if test="title != null and title != '' " >
+               title LIKE concat('%',#{title},'%')
+           </if>
+       </where>
+        LIMIT #{start},#{rows}
+    </select>
+
+    <!--根据标题模糊查询-->
+    <select id="selectTitleByName" resultType="Invitation">
+        SELECT * FROM invitation WHERE title like concat('%',#{title},'%')
+    </select>
+
+    <!--删除帖子根据id-->
+   <delete id="delInvitationById">
+       DELETE FROM invitation WHERE id=#{id}
+   </delete>
+</mapper>

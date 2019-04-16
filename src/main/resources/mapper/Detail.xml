@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zx.dao.DetailDao">
+<!--根据id查询回复内容-->
+    <select id="selectDataListById" resultType="Detail">
+        SELECT * FROM detail WHERE invid=#{invid}
+    </select>
+<!--保存回复-->
+    <insert id="addDetailByDetail">
+        INSERT INTO detail VALUES (DEFAULT ,#{invid},#{content},#{autor},now())
+    </insert>
+
+
+</mapper>
