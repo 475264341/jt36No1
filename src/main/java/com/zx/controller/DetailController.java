@@ -26,8 +26,8 @@ public class DetailController {
     }
     //跳转到添加页面
     @RequestMapping("/toAddDeta/{id}")
-    public String toAddDeta(@PathVariable("id") int id,Model model){
-        model.addAttribute("invid",id);
+    public String toAddDeta(@PathVariable("id") int ide,Model model){
+        model.addAttribute("invid",ide);
         return "addDetailList";
     }
 
